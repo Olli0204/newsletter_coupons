@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jtlshopplugin>
+    <Name>Coupons</Name>
+    <Description>Erzeugen von neu generierten Couponcodes für eine erfolgreiche Newsletteranmeldung</Description>
+    <Author>Oliver Kamps</Author>
+    <URL>https://ollipolli.de</URL>
+    <XMLVersion>102</XMLVersion>
+    <MinShopVersion>5.2.4</MinShopVersion>
+	<MaxShopVersion>5.5.3</MaxShopVersion>
+    <PluginID>newsletter_coupons</PluginID>
+    <Version>1.0.3</Version>
+    <CreateDate>2024-02-16</CreateDate>
+    <Install>
+        <Adminmenu>
+            <Settingslink sort="3">
+                <Name>Einstellungen</Name>
+                <Setting type="text" initialValue="" sort="1" conf="N">
+                    <Name>Allgemeine Einstellungen</Name>
+                    <ValueName>Spacer</ValueName>
+                </Setting>
+                <Setting type="checkbox" sort="2" conf="Y">
+                    <Name>Plugin Aktiv</Name>
+                    <Description>Mit dieser Einstellung schalten sie das Plugin aktiv.</Description>
+                    <ValueName>coupon_set_is_active</ValueName>
+                </Setting>
+                <Setting type="text" initialValue="" sort="3" conf="N">
+					<Name>Kupon Einstellungen</Name>
+					<ValueName>Spacer_coupon</ValueName>
+					<Description>Hier kannst du deinen Kupon konfigurieren. Denk daran, auch die Email Vorlage und die Sprachvariablen zu aktualisieren. In dem Email Template können für Wert, Mindestbestellwert und Dauer auch Platzhalter verwendet werden, die dann automatisch durch den eingestellten Wert ersetzt werden.</Description>
+				</Setting>
+				<Setting type="number" initialValue="5" sort="4" conf="Y">
+					<Name>Kupon Wert</Name>
+					<Description>Der Wert des Kupons, den der Kunde für die Newsletter-Anmeldung erhält.</Description>
+					<ValueName>coupon_set_Wert</ValueName>
+				</Setting>
+                <Setting type="number" initialValue="50" sort="5" conf="Y">
+					<Name>Mindestbestellwert</Name>
+					<Description>Der Mindestbestellwert, um den Kupon einzusetzen.</Description>
+					<ValueName>coupon_set_Mindestbestellwert</ValueName>
+				</Setting>
+				<Setting type="number" initialValue="31" sort="6" conf="Y">
+					<Name>Gültigkeit (in Tagen)</Name>
+					<Description>Gültigkeit des Kupons in Tagen.</Description>
+					<ValueName>coupon_set_DauerTage</ValueName>
+				</Setting>
+            </Settingslink>
+        </Adminmenu>
+        <Emailtemplate>
+		    <Template>
+			    <Name>Automatischer Newsletterkuponversand</Name>
+			    <Description>Vorlage für den automatischen Versand der NewsletterKuponCodes</Description>
+			    <Type>text/html</Type>
+			    <ModulId>newslettercoupons</ModulId>
+			    <Active>Y</Active>
+			    <AKZ>0</AKZ>
+			    <AGB>0</AGB>
+			    <WRB>0</WRB>
+			    <TemplateLanguage iso="GER">
+				    <Subject>Ihr Newsletter Rabattcode</Subject>
+				    <ContentHtml><![CDATA[
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Rabattcode</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .header {
+        background-color: #ffa54f;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+      .content {
+        padding: 30px;
+        color: #333333;
+      }
+      .button {
+        display: block;
+        width: 220px;
+        margin: 30px auto;
+        background-color: #ffa54f;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        text-decoration: none !important;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .table {
+        border-collapse: collapse;
+      }
+      .tabelle {
+        border: 1px solid #333333;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888888;
+        text-align: center;
+        padding: 20px;
+      }
+      .rabatt {
+        background-color: #ffa54f;
+        color: #fff;
+        display: block;
+        border-radius: 5px;
+        padding: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        Newsletter Rabattcode
+      </div>
+      <div class="content">
+        <p>Guten Tag</p>
+        <p>
+          vielen Dank für die Bestätigung deiner Newsletter-Anmeldung! Hiermit erhälst du deinen Newsletter Rabattcode, welcher ab sofort verwendet werden kann.
+        </p>
+        <div class="rabatt">
+            Kuponcode: {$oPluginMail->tkuponCode}<br />
+            
+        </div>
+        <br />
+            Rabatt:	{$oPluginMail->tVal}€<br />
+            Mindestbestellwert: {$oPluginMail->tminVal}€<br />
+            Gültigkeitsdauer: {$oPluginMail->tduration} Tage<br />
+        <p>Viele Grüße<br />Dein Snowshop-Team</p>
+      </div>
+      <div class="footer">
+        Bei Fragen erreichst du uns unter [info@snowshop.de]
+      </div>
+    </div>
+  </body>
+</html>
+                    ]]></ContentHtml>
+				    <ContentText><![CDATA[Hallo,
+
+Sie haben Ihren Newsletter von {$Firma->cName} erfolgreich aktiviert, vielen Dank!
+
+Hiermit erhalten sie ihren Newsletter Rabattcode, den sie ab sofort verwenden können.
+
+Kuponcode: {$oPluginMail->tkuponCode}
+Rabatt: {$oPluginMail->tVal}€
+Mindestbestellwert: {$oPluginMail->tminVal}€
+Gültigkeitsdauer: {$oPluginMail->tduration} Tage
+
+Viel Spaß beim Shoppen.
+Ihr Team von {$Firma->cName}]]></ContentText>
+			    </TemplateLanguage>
+			    <TemplateLanguage iso="ENG">
+				    <Subject>Your Newsletter Couponcode</Subject>
+				    <ContentHtml><![CDATA[
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Rabattcode</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .header {
+        background-color: #ffa54f;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+      .content {
+        padding: 30px;
+        color: #333333;
+      }
+      .button {
+        display: block;
+        width: 220px;
+        margin: 30px auto;
+        background-color: #ffa54f;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        text-decoration: none !important;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .table {
+        border-collapse: collapse;
+      }
+      .tabelle {
+        border: 1px solid #333333;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888888;
+        text-align: center;
+        padding: 20px;
+      }
+      .rabatt {
+        background-color: #ffa54f;
+        color: #fff;
+        display: block;
+        border-radius: 5px;
+        padding: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        Newsletter Rabattcode
+      </div>
+      <div class="content">
+        <p>Hey there,</p>
+        <p>
+          Thank you for confirming your newsletter subscription! You will now receive your newsletter discount code, which can be used immediately.
+        </p>
+        <div class="rabatt">
+            Couponcode: {$oPluginMail->tkuponCode}<br />
+            
+        </div>
+        <br />
+            Discount:	{$oPluginMail->tVal}€<br />
+            Minimum order value: {$oPluginMail->tminVal}€<br />
+            Expires in: {$oPluginMail->tduration} Tage<br />
+        <p>Kind regards<br />your Snowshop-Crew</p>
+      </div>
+      <div class="footer">
+        If you have any questions, you can reach us at [info@snowshop.de]
+      </div>
+    </div>
+  </body>
+</html>
+                    ]]></ContentHtml>
+				    <ContentText><![CDATA[Hey there,
+
+You have successfully activated your {$Firma->cName} newsletter, thank you!
+
+Here you will receive your newsletter discount code, which you can use immediately.
+
+Couponcode: {$oPluginMail->tkuponCode}
+Discount: {$oPluginMail->tVal}€
+Minimum order value: {$oPluginMail->tminVal}€
+Expires in: {$oPluginMail->tduration} Days
+
+Have fun shopping.
+Kind regards, {$Firma->cName}]]></ContentText>
+			    </TemplateLanguage>
+		    </Template>
+	    </Emailtemplate>
+    </Install>
+
+</jtlshopplugin>
