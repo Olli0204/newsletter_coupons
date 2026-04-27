@@ -6,9 +6,9 @@
     <URL>https://ollipolli.de</URL>
     <XMLVersion>102</XMLVersion>
     <MinShopVersion>5.2.4</MinShopVersion>
-	<MaxShopVersion>5.5.3</MaxShopVersion>
+	<MaxShopVersion>5.7.0</MaxShopVersion>
     <PluginID>newsletter_coupons</PluginID>
-    <Version>1.0.3</Version>
+    <Version>1.1.0</Version>
     <CreateDate>2024-02-16</CreateDate>
     <Install>
         <Adminmenu>
@@ -42,6 +42,11 @@
 					<Name>Gültigkeit (in Tagen)</Name>
 					<Description>Gültigkeit des Kupons in Tagen.</Description>
 					<ValueName>coupon_set_DauerTage</ValueName>
+				</Setting>
+				<Setting type="text" initialValue="" sort="7" conf="Y">
+					<Name>Kontakt-E-Mail</Name>
+					<Description>Die Kontakt-E-Mail Adresse, die in der Kupon-E-Mail angezeigt wird.</Description>
+					<ValueName>coupon_set_ContactMail</ValueName>
 				</Setting>
             </Settingslink>
         </Adminmenu>
@@ -136,16 +141,16 @@
         </p>
         <div class="rabatt">
             Kuponcode: {$oPluginMail->tkuponCode}<br />
-            
+
         </div>
         <br />
             Rabatt:	{$oPluginMail->tVal}€<br />
             Mindestbestellwert: {$oPluginMail->tminVal}€<br />
             Gültigkeitsdauer: {$oPluginMail->tduration} Tage<br />
-        <p>Viele Grüße<br />Dein Snowshop-Team</p>
+        <p>Viele Grüße<br />Dein {$Firma->cName}-Team</p>
       </div>
       <div class="footer">
-        Bei Fragen erreichst du uns unter [info@snowshop.de]
+        Bei Fragen erreichst du uns unter {$oPluginMail->tContactMail}
       </div>
     </div>
   </body>
@@ -169,11 +174,11 @@ Ihr Team von {$Firma->cName}]]></ContentText>
 				    <Subject>Your Newsletter Couponcode</Subject>
 				    <ContentHtml><![CDATA[
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newsletter Rabattcode</title>
+    <title>Newsletter Discount Code</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -237,7 +242,7 @@ Ihr Team von {$Firma->cName}]]></ContentText>
   <body>
     <div class="container">
       <div class="header">
-        Newsletter Rabattcode
+        Newsletter Discount Code
       </div>
       <div class="content">
         <p>Hey there,</p>
@@ -246,16 +251,16 @@ Ihr Team von {$Firma->cName}]]></ContentText>
         </p>
         <div class="rabatt">
             Couponcode: {$oPluginMail->tkuponCode}<br />
-            
+
         </div>
         <br />
             Discount:	{$oPluginMail->tVal}€<br />
             Minimum order value: {$oPluginMail->tminVal}€<br />
-            Expires in: {$oPluginMail->tduration} Tage<br />
-        <p>Kind regards<br />your Snowshop-Crew</p>
+            Expires in: {$oPluginMail->tduration} Days<br />
+        <p>Kind regards<br />Your {$Firma->cName} team</p>
       </div>
       <div class="footer">
-        If you have any questions, you can reach us at [info@snowshop.de]
+        If you have any questions, you can reach us at {$oPluginMail->tContactMail}
       </div>
     </div>
   </body>
