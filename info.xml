@@ -8,7 +8,7 @@
     <MinShopVersion>5.2.4</MinShopVersion>
 	<MaxShopVersion>5.7.0</MaxShopVersion>
     <PluginID>newsletter_coupons</PluginID>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <CreateDate>2024-02-16</CreateDate>
     <Install>
         <Adminmenu>
@@ -168,7 +168,9 @@ Mindestbestellwert: {$oPluginMail->tminVal}€
 Gültigkeitsdauer: {$oPluginMail->tduration} Tage
 
 Viel Spaß beim Shoppen.
-Ihr Team von {$Firma->cName}]]></ContentText>
+Ihr Team von {$Firma->cName}
+
+Bei Fragen erreichst du uns unter {$oPluginMail->tContactMail}]]></ContentText>
 			    </TemplateLanguage>
 			    <TemplateLanguage iso="ENG">
 				    <Subject>Your Newsletter Couponcode</Subject>
@@ -278,7 +280,9 @@ Minimum order value: {$oPluginMail->tminVal}€
 Expires in: {$oPluginMail->tduration} Days
 
 Have fun shopping.
-Kind regards, {$Firma->cName}]]></ContentText>
+Kind regards, {$Firma->cName}
+
+If you have any questions, you can reach us at {$oPluginMail->tContactMail}]]></ContentText>
 			    </TemplateLanguage>
 		    </Template>
 	    </Emailtemplate>
