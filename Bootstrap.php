@@ -19,7 +19,7 @@ class Bootstrap extends Bootstrapper
     {
         parent::boot($dispatcher);
 
-        if ((string)$this->getDB()->select('tplugineinstellungen', 'cName', 'coupon_set_is_active')->cWert === 'on') {
+        if ((string)$this->getDB()->select('tplugineinstellungen', 'cName', 'coupon_set_is_active')->cWert === 'Y') {
             $dispatcher->hookInto(
                 \HOOK_NEWSLETTER_PAGE_EMPFAENGERFREISCHALTEN,
                 function (array $args) {
