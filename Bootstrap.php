@@ -19,7 +19,9 @@ class Bootstrap extends Bootstrapper
     {
         parent::boot($dispatcher);
 
-        if ((string)$this->getDB()->select('tplugineinstellungen', 'cName', 'coupon_set_is_active')->cWert === 'Y') {
+        // Checkbox: JTL speichert 'on' (angehakt) bzw. '' (abgewählt); 'Y' stammt aus der Selectbox von v1.1.2/1.1.3
+        $active = $this->getDB()->select('tplugineinstellungen', 'cName', 'coupon_set_is_active')->cWert ?? '';
+        if (\in_array((string)$active, ['on', 'Y'], true)) {
             $dispatcher->hookInto(
                 \HOOK_NEWSLETTER_PAGE_EMPFAENGERFREISCHALTEN,
                 function (array $args) {

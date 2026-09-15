@@ -40,6 +40,7 @@ Verfügbare Platzhalter in der Vorlage:
 
 | Plugin-Version | JTL-Shop      |
 |----------------|---------------|
+| 1.1.4          | 5.2.4 – 5.8.0 |
 | 1.1.3          | 5.2.4 – 5.8.0 |
 | 1.1.1          | 5.2.4 – 5.7.0 |
 | 1.0.3          | 5.2.4 – 5.5.3 |
@@ -53,6 +54,9 @@ Verfügbare Platzhalter in der Vorlage:
 4. E-Mail-Vorlage bei Bedarf im Backend anpassen
 
 ## Changelog
+
+### 1.1.4
+- Einstellung „Plugin Aktiv" ist wieder eine Checkbox. Die Selectbox aus 1.1.2 beruhte auf einer falschen Annahme: der Core schreibt für eine abgewählte Checkbox einen Leerstring, das Abschalten funktioniert also. Migration wandelt gespeicherte Werte `Y`/`N` in `on`/leer um.
 
 ### 1.1.3
 - Kompatibilität mit JTL-Shop 5.8.0 geprüft (Bootstrapper, Kupon, Mail, Migration, Hook 39 und E-Mail-Vorlagen unverändert), MaxShopVersion auf 5.8.0 angehoben

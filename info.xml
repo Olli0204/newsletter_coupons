@@ -8,7 +8,7 @@
     <MinShopVersion>5.2.4</MinShopVersion>
 	<MaxShopVersion>5.8.0</MaxShopVersion>
     <PluginID>newsletter_coupons</PluginID>
-    <Version>1.1.3</Version>
+    <Version>1.1.4</Version>
     <CreateDate>2024-02-16</CreateDate>
     <Install>
         <Adminmenu>
@@ -18,14 +18,10 @@
                     <Name>Allgemeine Einstellungen</Name>
                     <ValueName>Spacer</ValueName>
                 </Setting>
-                <Setting type="selectbox" initialValue="N" sort="2" conf="Y">
+                <Setting type="checkbox" sort="2" conf="Y">
                     <Name>Plugin Aktiv</Name>
                     <Description>Mit dieser Einstellung schalten sie das Plugin aktiv.</Description>
                     <ValueName>coupon_set_is_active</ValueName>
-                    <SelectboxOptions>
-                        <Option value="Y" sort="0">Ja</Option>
-                        <Option value="N" sort="1">Nein</Option>
-                    </SelectboxOptions>
                 </Setting>
                 <Setting type="text" initialValue="" sort="3" conf="N">
 					<Name>Kupon Einstellungen</Name>
