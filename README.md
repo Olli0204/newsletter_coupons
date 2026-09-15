@@ -40,6 +40,7 @@ Verfügbare Platzhalter in der Vorlage:
 
 | Plugin-Version | JTL-Shop      |
 |----------------|---------------|
+| 1.1.3          | 5.2.4 – 5.8.0 |
 | 1.1.1          | 5.2.4 – 5.7.0 |
 | 1.0.3          | 5.2.4 – 5.5.3 |
 | 1.0.2          | 5.2.4 – 5.5.3 |
@@ -52,6 +53,10 @@ Verfügbare Platzhalter in der Vorlage:
 4. E-Mail-Vorlage bei Bedarf im Backend anpassen
 
 ## Changelog
+
+### 1.1.3
+- Kompatibilität mit JTL-Shop 5.8.0 geprüft (Bootstrapper, Kupon, Mail, Migration, Hook 39 und E-Mail-Vorlagen unverändert), MaxShopVersion auf 5.8.0 angehoben
+- Prüfung nach `Kupon::getByCode()` korrigiert: die Methode liefert `false` statt `null`, wenn der Code nicht gefunden wird
 
 ### 1.1.1
 - Kontakt-E-Mail-Platzhalter auch in Plaintext-E-Mail-Vorlagen ergänzt

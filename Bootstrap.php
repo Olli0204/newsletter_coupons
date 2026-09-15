@@ -52,7 +52,7 @@ class Bootstrap extends Bootstrapper
                         $kuponCode = $this->createCoupon($cEmail, $value, $minValue, $duration);
                         $kupon     = new Kupon();
                         $kuponArr  = $kupon->getByCode((string)$kuponCode);
-                        if ($kuponArr === null) {
+                        if ($kuponArr === false) {
                             return;
                         }
                         $kuponId = $kuponArr->kKupon;

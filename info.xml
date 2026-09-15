@@ -6,9 +6,9 @@
     <URL>https://ollipolli.de</URL>
     <XMLVersion>102</XMLVersion>
     <MinShopVersion>5.2.4</MinShopVersion>
-	<MaxShopVersion>5.7.0</MaxShopVersion>
+	<MaxShopVersion>5.8.0</MaxShopVersion>
     <PluginID>newsletter_coupons</PluginID>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <CreateDate>2024-02-16</CreateDate>
     <Install>
         <Adminmenu>
