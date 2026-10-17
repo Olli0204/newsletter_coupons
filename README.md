@@ -40,6 +40,7 @@ Verfügbare Platzhalter in der Vorlage:
 
 | Plugin-Version | JTL-Shop      |
 |----------------|---------------|
+| 1.1.5          | 5.2.4 – 5.8.2 |
 | 1.1.4          | 5.2.4 – 5.8.0 |
 | 1.1.3          | 5.2.4 – 5.8.0 |
 | 1.1.1          | 5.2.4 – 5.7.0 |
@@ -54,6 +55,9 @@ Verfügbare Platzhalter in der Vorlage:
 4. E-Mail-Vorlage bei Bedarf im Backend anpassen
 
 ## Changelog
+
+### 1.1.5
+- Kompatibilität mit JTL-Shop 5.8.2 geprüft: die Core-Änderungen 5.8.0 → 5.8.2 (Sicherheitsupdate) betreffen nur Consent-Manager, RMA, Sonderpreis-Berechnung, Banner/ImageMap, PLZ-Autovervollständigung und Backend-Login; NOVA-Templates und Plugin-API sind unverändert. MaxShopVersion auf 5.8.2 angehoben
 
 ### 1.1.4
 - Einstellung „Plugin Aktiv" ist wieder eine Checkbox. Die Selectbox aus 1.1.2 beruhte auf einer falschen Annahme: der Core schreibt für eine abgewählte Checkbox einen Leerstring, das Abschalten funktioniert also. Migration wandelt gespeicherte Werte `Y`/`N` in `on`/leer um.
