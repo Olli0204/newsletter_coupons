@@ -40,6 +40,7 @@ Verfügbare Platzhalter in der Vorlage:
 
 | Plugin-Version | JTL-Shop      |
 |----------------|---------------|
+| 1.1.7          | 5.2.4 – 5.8.4 |
 | 1.1.6          | 5.2.4 – 5.8.3 |
 | 1.1.5          | 5.2.4 – 5.8.2 |
 | 1.1.4          | 5.2.4 – 5.8.0 |
@@ -56,6 +57,9 @@ Verfügbare Platzhalter in der Vorlage:
 4. E-Mail-Vorlage bei Bedarf im Backend anpassen
 
 ## Changelog
+
+### 1.1.7
+- Kompatibilität mit JTL-Shop 5.8.4 geprüft: die Core-Änderungen 5.8.3 → 5.8.4 (Sicherheitsupdate) betreffen nur Lieferadressen-Prüfung im Checkout, OPC-Vorschau-Token, IP-Ermittlung hinter Proxys, CSRF-Schutz im Checkout, Rate-Limits für Wawi-Login und Backend, Backend-Benutzer- und Einstellungsverwaltung sowie Bibliotheks-Updates (Guzzle 7.15, Smarty 5.8); keine vom Plugin genutzte API und keine überschriebenen NOVA-Templates sind betroffen. MaxShopVersion auf 5.8.4 angehoben
 
 ### 1.1.6
 - Kompatibilität mit JTL-Shop 5.8.3 geprüft: die Core-Änderungen 5.8.2 → 5.8.3 (Sicherheits- und Performance-Update) betreffen nur Backend-Benutzerverwaltung/2FA/Rechteprüfung, Backend-Benachrichtigungen, das Template-Änderungsprotokoll, den Wawi-Bildabgleich, die Zahlungsart-Prüfung im Checkout sowie die SQL von Preissortierung und Filtern (MariaDB 10.11); NOVA-Templates und Plugin-API sind unverändert. MaxShopVersion auf 5.8.3 angehoben
